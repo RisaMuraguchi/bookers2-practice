@@ -44,10 +44,22 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  def hashtag
+    @user = current_user
+    @tag = Hashtag.find_by(hashname: params[:name])
+    @books = @tag.books
+    hashtags = []
+    @books.each do |book|
+      hashtags += book.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
+    end
+    @hashtags = hashtags.uniq
+  end
+
+
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :hashbody)
   end
 
   def ensure_correct_user
