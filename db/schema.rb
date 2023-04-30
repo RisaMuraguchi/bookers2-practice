@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_04_014952) do
+ActiveRecord::Schema.define(version: 2023_04_30_133016) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2023_04_04_014952) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "book_hashtag_relations", force: :cascade do |t|
+    t.integer "book_id"
+    t.integer "hashtag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_book_hashtag_relations_on_book_id"
+    t.index ["hashtag_id"], name: "index_book_hashtag_relations_on_hashtag_id"
+  end
+
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -61,6 +70,13 @@ ActiveRecord::Schema.define(version: 2023_04_04_014952) do
     t.integer "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -86,4 +102,6 @@ ActiveRecord::Schema.define(version: 2023_04_04_014952) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "book_hashtag_relations", "books"
+  add_foreign_key "book_hashtag_relations", "hashtags"
 end
