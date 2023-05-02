@@ -3,6 +3,7 @@
     <% @books.each do |book| %>
       <li>
         <%= link_to book_path(book.id) do %>
+          <%= book.body %>
         <% end %>
       </li>
     <% end %>
