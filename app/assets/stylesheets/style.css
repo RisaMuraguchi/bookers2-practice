@@ -1,0 +1,12 @@
+.new-img{
+  width: 400px;
+  object-fit: cover;
+}
+
+h2 {
+  color: red;
+}
+
+body {
+  background-color: #e6e6fa;
+}
