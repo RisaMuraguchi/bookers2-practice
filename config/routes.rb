@@ -5,6 +5,11 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
+  # ゲストログイン用
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
   get '/book/hashtag/:name', to: "books#hashtag"
 
   resources :users do
