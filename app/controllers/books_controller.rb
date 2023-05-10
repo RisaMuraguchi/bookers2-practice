@@ -44,6 +44,7 @@ class BooksController < ApplicationController
     redirect_to books_path
   end
 
+  # ハッシュタグ
   def hashtag
     @user = current_user
     @tag = Hashtag.find_by(hashname: params[:name])
@@ -59,7 +60,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :hashbody)
+    params.require(:book).permit(:title, :body)
   end
 
   def ensure_correct_user

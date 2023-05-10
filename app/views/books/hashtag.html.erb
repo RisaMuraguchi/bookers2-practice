@@ -3,8 +3,18 @@
     <% @books.each do |book| %>
       <li>
         <%= link_to book_path(book.id) do %>
-          <%= book.body %>
+        <% byebug %>
+          <%= book.body.split("#")[0] %>
         <% end %>
+
+        <% book.hashtags.each do |hashtag| %>
+
+          <%= link_to book_path(book.id) do %>
+            #<%= hashtag.hashname %>
+          <% end %>
+
+         <% end %>
       </li>
     <% end %>
+
   </ul>
