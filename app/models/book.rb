@@ -36,6 +36,6 @@ before_update do
       tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
       book.hashtags << tag
     end
-  end
+end
 
 end
