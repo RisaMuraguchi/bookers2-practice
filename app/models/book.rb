@@ -22,7 +22,7 @@ after_create do
     hashtags  = self.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
       # ハッシュタグは先頭の#を外した上で保存
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
+      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete("#"))
       book.hashtags << tag
     end
 end
@@ -33,7 +33,7 @@ before_update do
     # hashtags = hashbody.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags = self.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
     hashtags.uniq.map do |hashtag|
-      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
+      tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete("#"))
       book.hashtags << tag
     end
 end

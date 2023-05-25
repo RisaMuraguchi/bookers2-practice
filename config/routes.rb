@@ -7,15 +7,15 @@ Rails.application.routes.draw do
 
   # ゲストログイン用
   devise_scope :user do
-    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+    post "users/guest_sign_in", to: "users/sessions#guest_sign_in"
   end
 
-  get '/book/hashtag/:name', to: "books#hashtag"
+  get "/book/hashtag/:name", to: "books#hashtag"
 
   resources :users do
     resource :relationships, only: [:create, :destroy]
-    get 'followings' => 'relationships#followings', as: 'followings'
-    get 'followers' => 'relationships#followers', as: 'followers'
+    get "followings" => "relationships#followings", as: "followings"
+    get "followers" => "relationships#followers", as: "followers"
   end
 
   root to: "homes#top"

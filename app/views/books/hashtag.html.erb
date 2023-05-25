@@ -3,7 +3,6 @@
     <% @books.each do |book| %>
       <li>
         <%= link_to book_path(book.id) do %>
-        <% byebug %>
           <%= book.body.split("#")[0] %>
         <% end %>
 
