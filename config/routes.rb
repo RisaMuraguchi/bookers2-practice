@@ -23,6 +23,5 @@ Rails.application.routes.draw do
 
   #追加
   get "home/index" => "homes#index"
-  get '*path', to: 'home#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
